@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
       height: 24,
     ),
     SvgPicture.asset(
-      "assets/Payments.svg",
+      "assets/Payments.png",
       width: 24,
       height: 24,
     ),
@@ -55,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
       height: 24,
     ),
     SvgPicture.asset(
-      "assets/Payments.svg",
+      "assets/Payments.png",
       width: 24,
       height: 24,
     ),
@@ -95,7 +95,7 @@ class _MainScreenState extends State<MainScreen> {
         BlendMode.srcIn,
       ),
       child: SvgPicture.asset(
-        "assets/Payments.svg",
+        "assets/Payments.png",
         width: 24,
         height: 24,
       ),
@@ -169,13 +169,13 @@ class _MainScreenState extends State<MainScreen> {
       height: 24,
     ),label: "Home"),
     BottomNavigationBarItem(icon: SvgPicture.asset("assets/Order.svg"),label: "Order"),
-    BottomNavigationBarItem(icon: SvgPicture.asset("assets/Payments.svg"),label: "Payment"),
+    BottomNavigationBarItem(icon: SvgPicture.asset("assets/Payments.png"),label: "Payment"),
     BottomNavigationBarItem(icon: SvgPicture.asset("assets/Account.svg"),label: "Account"),
 
   ];
 
   var navBody=[
-    HomeScreen(),HomeScreen(),HomeScreen(),HomeScreen(),HomeScreen(),
+    HomeScreen1(),HomeScreen1(),HomeScreen1(),HomeScreen1(),HomeScreen1(),
 
   ];
 

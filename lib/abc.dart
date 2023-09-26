@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_ui/CustomContainer.dart';
-import 'package:shared_ui/constants.dart';
+import 'package:get/get.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'custom.dart';
 
-class HomeScreen1 extends StatelessWidget {
-  const HomeScreen1({Key? key}) : super(key: key);
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
 
   void _showBottomSheet(BuildContext context) {
@@ -18,9 +20,9 @@ class HomeScreen1 extends StatelessWidget {
         return Container(
           width: context.screenWidth,
           decoration: BoxDecoration(
-            color: Colors.white, // Change the background color
+            color: Colors.white,
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(50.0), // Increase border radius
+              top: Radius.circular(50.0),
             ),
           ),
           // You can customize the appearance of your bottom sheet here
@@ -101,86 +103,87 @@ class HomeScreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return Container(
+      width: context.width*.5,
+      child: Scaffold(
         backgroundColor: Colors.white,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Center(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  10.widthBox,
-                  Icon(Icons.map_outlined, color: Colors.black,size: 30,),
-                  10.widthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          "Pick up From".text.size(19).bold.make(),
-                          Icon(Icons.keyboard_arrow_down,color: Colors.black,)
-                        ],
-                      ),
-                      "Pick up From".text.size(12).make(),
-                    ],
-                  )
-
-                ],
-              ),
-              20.heightBox,
-              Row(
-                children: [
-                  25.widthBox,
-                  "Book ".text.size(21).make(),
-                  " for".text.size(21).make(),
-                ],
-              ),
-              ListView.builder(
-                shrinkWrap: true,
-                  itemCount: 3,
-                  itemBuilder: (BuildContext buildcontext,int index){
-                return  InkWell(
-                  onTap: (){
-                    _showBottomSheet(context);
-                  },
-                  child: Container(
-                    height: 200,
-                    child: Row(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    10.widthBox,
+                    Icon(Icons.map_outlined, color: Colors.black,size: 30,),
+                    10.widthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-
-                          width: context.screenWidth*.2,
-                          color: Colors.black26,
-                        ),
-                        20.widthBox,
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            "2 Wheeler".text.bold.size(21).make(),
-                            Container(
-                              width: context.screenWidth*.55,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  "Choose from our fleet".text.size(17).make(),
-                                  Icon(Icons.navigate_next,color: Colors.black,size: 30,)
-                                ],
-                              ),
-                            )
+                            "Pick up From".text.size(19).bold.make(),
+                            Icon(Icons.keyboard_arrow_down,color: Colors.black,)
                           ],
-                        )
-
+                        ),
+                        "Pick up From".text.size(12).make(),
                       ],
                     )
-                  ).box.width(context.screenWidth*.4).height(context.screenHeight*.14).roundedLg.outerShadow.white.margin(EdgeInsets.symmetric(vertical: 18   ,horizontal: 12)).padding(EdgeInsets.all(20)).make(),
-                );
-              }),
-            ],
+
+                  ],
+                ),
+                20.heightBox,
+                Row(
+                  children: [
+                    25.widthBox,
+                    "Book ".text.size(21).make(),
+                    SizedBox(
+                      height:60,
+                      width:50,
+
+
+                    ),
+                    " for".text.size(21).make(),
+                  ],
+                ),
+
+                ListView(
+                  shrinkWrap: true,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        _showBottomSheet(context);
+                        //
+                      },
+                      child:CustomHomeWidget(imagePath: "assets/icons8-truck-48.png",text1: "Trucks",text2: "Change from our fleet",),
+
+                    ),
+
+                    InkWell(
+                      onTap: (){
+                        _showBottomSheet(context);
+                        //
+                      },
+                      child:CustomHomeWidget(imagePath: "assets/bike.png",text1: "2 Wheeler",text2:"For smaller goods"),
+
+                    ),
+
+                    InkWell(
+                        onTap: (){
+                          _showBottomSheet(context);
+                          //
+                        },
+                        child:CustomHomeWidget(imagePath: "assets/Payments.png",text1: "3 Wheeler",text2: "For medium goods",)
+
+                    ),
+
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
