@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_ui/All.dart';
 import 'package:shared_ui/HomeScreen.dart';
-import 'package:shared_ui/screens/game.dart';
-import 'package:shared_ui/search.dart';
-import 'package:shared_ui/search2.dart';
-import 'package:shared_ui/search3.dart';
 
 import 'MainScreen.dart';
-import 'abc.dart';
-import 'models/numbers.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,18 +32,9 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        primarySwatch: Colors.blue,
-
-        canvasColor: Colors.yellow[700],
-        highlightColor: Colors.blueGrey,
         useMaterial3: true,
       ),
-      home:ChangeNotifierProvider(
-        create: (BuildContext context) {
-          return Numbers();
-        },
-        child: SearchScreen3(),
-      ),
+      home: const MainScreen(),
     );
   }
 }
