@@ -4,6 +4,8 @@ import 'package:shared_ui/All.dart';
 import 'package:shared_ui/HomeScreen.dart';
 import 'package:shared_ui/screens/game.dart';
 import 'package:shared_ui/search.dart';
+import 'package:shared_ui/search2.dart';
+import 'package:shared_ui/search3.dart';
 
 import 'MainScreen.dart';
 import 'abc.dart';
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
         create: (BuildContext context) {
           return Numbers();
         },
-        child: Game(),
+        child: SearchScreen3(),
       ),
     );
   }
