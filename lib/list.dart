@@ -10,7 +10,6 @@ class ListViewScreen extends StatefulWidget {
 }
 
 class _ListViewScreenState extends State<ListViewScreen> {
-  int _value=1;
 
   void _showBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -26,71 +25,8 @@ class _ListViewScreenState extends State<ListViewScreen> {
             ),
           ),
           // You can customize the appearance of your bottom sheet here
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              20.heightBox,
-              Padding(
-
-                padding: const EdgeInsets.all(15.0),
-                child: "Goods Quantity".text.bold.align(TextAlign.start).black.size(21).make(),
-              ),
-              ListTile(
-                title: Text(
-                  'Loose',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.91,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w600,
-
-                  ),
-                ),
-                leading: Radio(
-                  activeColor: Colors.yellow,
-                  fillColor: MaterialStateColor.resolveWith((states) =>  Colors.yellow),
-
-                  value: 1,
-                  groupValue: _value,
-                  onChanged: (value) {
-                    setState(() {
-                      _value = value!;
-                    });
-                  },
-                ),
-              ),
-              ListTile(
-                title: TextField(
-
-                ),
-                leading: Radio(
-                  activeColor: Colors.yellow,
-                  fillColor: MaterialStateColor.resolveWith((states) =>  Colors.yellow),
-
-                  value: 2,
-                  groupValue: _value,
-                  onChanged: (value) {
-                    setState(() {
-                      _value = value!;
-                    });
-                  },
-                ),
-              ),
-
-              20.heightBox,
-              Container(
-                width: context.screenWidth * .7,
-                height: context.screenWidth * .11,
-                child: ElevatedButton(onPressed: () {},
-                  child: Text("Done", style: TextStyle(color: Colors.black),),
-                  style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(60),
-                  ),
-                      backgroundColor: Color(0xFFFFC20C)),),
-              ),
-              20.heightBox,
-            ],
-          ),
+          child:
+          BottomSheetData(),
         );
       },
     );
@@ -179,4 +115,110 @@ class _ListViewScreenState extends State<ListViewScreen> {
     );
   }
 
+}
+
+class BottomSheetData extends StatefulWidget {
+  const BottomSheetData({Key? key}) : super(key: key);
+
+  @override
+  State<BottomSheetData> createState() => _BottomSheetDataState();
+}
+
+class _BottomSheetDataState extends State<BottomSheetData> {
+  int _value=1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        20.heightBox,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+
+              padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+              child: "Goods Quantity".text.bold.align(TextAlign.start).black.size(21).make(),
+            ),
+            ListTile(
+              title: Text(
+                'Loose',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20.91,
+                  fontFamily: 'Inter',
+                  fontWeight: FontWeight.w600,
+
+                ),
+              ),
+              leading: Radio(
+                activeColor: Colors.yellow,
+                fillColor: MaterialStateColor.resolveWith((states) =>  Colors.yellow),
+
+                value: 1,
+                groupValue: _value,
+                onChanged: (value) {
+                  setState(() {
+                    _value = value!;
+                  });
+                },
+              ),
+            ),
+            Container(width: context.screenWidth*.7,
+              child: ListTile(
+                title: Container(
+
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(borderRadius:BorderRadius.circular(10) ,color: Colors.grey.shade200,border:Border.all(color: Colors.grey.shade600)),
+
+                  child: TextField(
+
+                        decoration: InputDecoration(
+
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            borderSide: BorderSide(color: Colors.black,width: 2),
+                          ),
+
+                          hintText: 'Enter text',
+                          // Remove underline
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                        ),
+
+                  ),
+                ),
+                leading: Radio(
+                  activeColor: Colors.yellow,
+                  fillColor: MaterialStateColor.resolveWith((states) =>  Colors.yellow),
+
+                  value: 2,
+                  groupValue: _value,
+                  onChanged: (value) {
+                    setState(() {
+                      _value = value!;
+                    });
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        20.heightBox,
+        Container(
+          width: context.screenWidth * .7,
+          height: context.screenWidth * .11,
+          child: ElevatedButton(onPressed: () {},
+            child: Text("Done", style: TextStyle(color: Colors.black),),
+            style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(60),
+            ),
+                backgroundColor: Color(0xFFFFC20C)),),
+        ),
+        20.heightBox,
+      ],
+    );
+  }
 }
